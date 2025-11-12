@@ -43,8 +43,9 @@ if (-not (Test-Path $keyFile)) {
     exit 1
 }
 
-$apiKey = (Get-Content $keyFile -Raw).Trim()
-if ([string]::IsNullOrWhiteSpace($apiKey) -or $apiKey.StartsWith("#")) {
+# Read all non-comment, non-blank lines
+$apiKey = (Get-Content $keyFile | Where-Object { $_ -notmatch '^\s*#' -and $_ -notmatch '^\s*$' } | Select-Object -First 1)
+if ([string]::IsNullOrWhiteSpace($apiKey)) {
     Write-Error "NuGet API key not found in $keyFile"
     Write-Host "Please add your NuGet API key to nuget-key.txt" -ForegroundColor Red
     exit 1
