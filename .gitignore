@@ -4,6 +4,7 @@ obj
 *.user
 .idea
 Nugets
+nuget-key.txt
 
 /EFCore.BulkExtensions.Tests/testsettings.local.json
 !*.csproj
