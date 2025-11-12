@@ -1,24 +1,30 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>    
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsNotAsErrors>NU1608;NU1107</WarningsNotAsErrors>
     <NoWarn>$(NoWarn);CA2007</NoWarn>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>$(MSBuildThisFileDirectory)..\Keys\EFCore.BulkExtensions.snk</AssemblyOriginatorKeyFile>
     <DelaySign>false</DelaySign>
   </PropertyGroup>
   <ItemGroup>
+    <!-- Exclude Oracle and MySQL tests until providers support EF Core 10 -->
+    <Compile Remove="*Oracle*.cs" />
+    <Compile Remove="*MySql*.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="DelegateDecompiler.EntityFrameworkCore5" Version="0.35.0" />
     <PackageReference Include="FastMember" Version="1.5.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.NetTopologySuite" Version="9.0.10" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.NetTopologySuite" Version="9.0.10" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.NetTopologySuite" Version="10.0.0-rc.2.25502.107" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.NetTopologySuite" Version="10.0.0-rc.2.25502.107" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.0" />
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.NetTopologySuite" Version="9.0.4" />
-    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql.NetTopologySuite" Version="9.0.0" />
-    <PackageReference Include="Oracle.EntityFrameworkCore" Version="9.23.26000" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.NetTopologySuite" Version="10.0.0-rc.2" />
+    <!--PackageReference Include="Pomelo.EntityFrameworkCore.MySql.NetTopologySuite" Version="9.0.0" /-->
+    <!--PackageReference Include="Oracle.EntityFrameworkCore" Version="9.23.26000" /-->
     <PackageReference Include="RT.Comb" Version="4.0.3" />
     <PackageReference Include="SQLitePCLRaw.bundle_e_sqlite3" Version="3.0.2" />
     <PackageReference Include="StrongNamer" Version="0.2.5" PrivateAssets="All" />
@@ -27,7 +33,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EFCore.BulkExtensions\EFCore.BulkExtensions.csproj" />
-	<ProjectReference Include="..\EFCore.BulkExtensions.MySql\EFCore.BulkExtensions.MySql.csproj" />
+	<!--ProjectReference Include="..\EFCore.BulkExtensions.MySql\EFCore.BulkExtensions.MySql.csproj" /-->
   </ItemGroup>
   <ItemGroup>
     <None Update="testsettings.local.json">

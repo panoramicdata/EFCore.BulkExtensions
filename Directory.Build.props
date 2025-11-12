@@ -1,13 +1,14 @@
 <Project>
   <PropertyGroup>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsNotAsErrors>NU1608;NU1107</WarningsNotAsErrors>
     <Nullable>enable</Nullable>
     <Authors>borisdj</Authors>
     <PackageProjectUrl>https://github.com/borisdj/EFCore.BulkExtensions</PackageProjectUrl>
     <Company>CODIS LLC</Company>
     <PackageIcon>EFCoreBulk.png</PackageIcon>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-	<PackageReleaseNotes>net 9 full</PackageReleaseNotes>
+	<PackageReleaseNotes>net 10 full</PackageReleaseNotes>
     <PackageTags>EntityFrameworkCore Entity Framework Core .Net EFCore EF Core Bulk Batch Copy SqlBulkCopy Extensions Insert Update Delete Read Truncate SaveChanges</PackageTags>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <RepositoryUrl>https://github.com/borisdj/EFCore.BulkExtensions</RepositoryUrl>
@@ -27,9 +28,9 @@
     <AssemblyVersion>$(Version).0</AssemblyVersion>
   </PropertyGroup>
   <PropertyGroup Condition="!$(MSBuildProjectName.EndsWith('Net8'))">
-    <Version>9.0.2</Version>
-    <PackageOutputPath>$(SolutionDir)Nugets\net9</PackageOutputPath>
-    <AssemblyVersion>$(Version).0</AssemblyVersion>
+    <Version>10.0.0-rc.1</Version>
+    <PackageOutputPath>$(SolutionDir)Nugets\net10</PackageOutputPath>
+    <AssemblyVersion>10.0.0.0</AssemblyVersion>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="StrongNamer" Version="0.2.5" PrivateAssets="All" />

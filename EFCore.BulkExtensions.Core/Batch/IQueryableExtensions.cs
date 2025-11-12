@@ -38,7 +38,31 @@ public static class IQueryableExtensions
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
 
         var queryContext = enumerator.Private<RelationalQueryContext>(relationalQueryContextText) ?? throw new InvalidOperationException($"{cannotGetText} {relationalQueryContextText}");
-        var parameterValues = queryContext.ParameterValues;
+        
+        // In EF Core 10, ParameterValues access may have changed - try to get it via reflection first
+        IReadOnlyDictionary<string, object?>? parameterValues = null;
+        
+        // Try to get ParameterValues property (works for EF Core 8/9)
+        var parameterValuesProperty = typeof(RelationalQueryContext).GetProperty("ParameterValues", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+        if (parameterValuesProperty != null)
+        {
+            parameterValues = (IReadOnlyDictionary<string, object?>?)parameterValuesProperty.GetValue(queryContext);
+        }
+        
+        // If not found, try the base QueryContext class
+        if (parameterValues == null)
+        {
+            var baseProperty = typeof(QueryContext).GetProperty("ParameterValues", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+            if (baseProperty != null)
+            {
+                parameterValues = (IReadOnlyDictionary<string, object?>?)baseProperty.GetValue(queryContext);
+            }
+        }
+        
+        if (parameterValues == null)
+        {
+            throw new InvalidOperationException($"{cannotGetText} ParameterValues from QueryContext");
+        }
 
 #pragma warning disable EF1001 // Internal EF Core API usage.
         var relationalCommandCache = (RelationalCommandCache?)enumerator.Private(relationalCommandCacheText);
@@ -49,13 +73,16 @@ public static class IQueryableExtensions
         if (relationalCommandCache != null)
         {
 #pragma warning disable EF1001 // Internal EF Core API usage.
-            command = (IRelationalCommand?)relationalCommandCache?.GetRelationalCommandTemplate(parameterValues);
+            // Convert IReadOnlyDictionary to Dictionary if needed for EF Core 10
+            var paramDict = parameterValues as Dictionary<string, object?> ?? new Dictionary<string, object?>(parameterValues);
+            command = (IRelationalCommand?)relationalCommandCache?.GetRelationalCommandTemplate(paramDict);
 #pragma warning restore EF1001
         }
         if (command == null && relationalCommandResolver != null)
         {
 #pragma warning disable EF1001 // Internal EF Core API usage.
-            command = (IRelationalCommand?)relationalCommandResolver.DynamicInvoke(parameterValues);
+            var paramDict = parameterValues as Dictionary<string, object?> ?? new Dictionary<string, object?>(parameterValues);
+            command = (IRelationalCommand?)relationalCommandResolver.DynamicInvoke(paramDict);
 #pragma warning restore EF1001
         }
         if (command == null)

@@ -14,7 +14,7 @@ using System.Reflection;
 using System.Text.Json;
 using EFCore.BulkExtensions.SqlAdapters;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Infrastructure.Internal;
-using Oracle.ManagedDataAccess.Client;
+//using Oracle.ManagedDataAccess.Client;  // Excluded for EF Core 10 until Oracle provider supports it
 using System.Threading;
 using EFCore.BulkExtensions.Tests.Owned;
 
@@ -262,7 +262,7 @@ public class TestContext : TestContextBase
             modelBuilder.Entity<Tracker>().OwnsOne(t => t.Location).Ignore(p => p.Location); // Point only on SqlServer
         }
 
-        if (Database.IsSqlite() || Database.IsNpgsql() || Database.IsMySql())
+        if (Database.IsSqlite() || Database.IsNpgsql() /* || Database.IsMySql() */)  // MySQL excluded for EF Core 10
         {
             modelBuilder.Entity<Category>().Ignore(p => p.HierarchyDescription);
 
@@ -284,12 +284,14 @@ public class TestContext : TestContextBase
                 .HasSrid(4326);
         }
 
+        /* Excluded for EF Core 10 until MySQL provider supports it
         if (Database.IsMySql())
         {
             modelBuilder.Entity<Address>().Ignore(p => p.LocationGeography);
             modelBuilder.Entity<Address>().Ignore(p => p.LocationGeometry);
             modelBuilder.Entity<Address>().Ignore(p => p.GeoLine);
         }
+        */
 
         if (Database.IsNpgsql())
         {
@@ -323,7 +325,7 @@ public class TestContext : TestContextBase
         modelBuilder.Entity<AtypicalRowVersionEntity>().Property(e => e.RowVersion).HasDefaultValue(0).IsConcurrencyToken().ValueGeneratedOnAddOrUpdate().Metadata.SetBeforeSaveBehavior(PropertySaveBehavior.Save);
         modelBuilder.Entity<AtypicalRowVersionEntity>().Property(e => e.SyncDevice).IsRequired(true).IsConcurrencyToken().HasDefaultValue("");
 
-        if (!Database.IsNpgsql() && !Database.IsMySql())
+        if (!Database.IsNpgsql() /* && !Database.IsMySql() */)  // MySQL excluded for EF Core 10
         {
             modelBuilder.Entity<AtypicalRowVersionConverterEntity>().Property(e => e.RowVersionConverted).HasConversion(new NumberToBytesConverter<long>()).HasColumnType("timestamp").IsRowVersion().IsConcurrencyToken();
         }
@@ -374,7 +376,7 @@ public class TestContextBase : DbContext
         {
             Database.EnsureCreated();
         }
-        catch (OracleException)
+        catch /*(OracleException)*/ // Oracle excluded for EF Core 10
         {
             // NOOP
         }

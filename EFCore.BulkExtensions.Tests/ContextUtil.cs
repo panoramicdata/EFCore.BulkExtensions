@@ -69,18 +69,22 @@ public class ContextUtil
 #endif
                 break;
             }
+            /* MySQL excluded for EF Core 10
             case SqlType.MySql:
             {
                 string connectionString = GetMySqlConnectionString(databaseName);
                 optionsBuilder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString), opt => opt.UseNetTopologySuite());
                 break;
             }
+            */
+            /* Oracle excluded for EF Core 10
             case SqlType.Oracle:
             {
                 string connectionString = GetOracleConnectionString(databaseName);
                 optionsBuilder.UseOracle(connectionString);
                 break;
             }
+            */
             case SqlType.Sqlite:
             {
                 string connectionString = GetSqliteConnectionString(databaseName);
