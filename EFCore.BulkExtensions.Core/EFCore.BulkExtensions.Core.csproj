@@ -1,9 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
-    <Title>EFCore.BulkExtensions.Core</Title>
+    <Title>EFCore.BulkExtensions.Dotnet10.Core</Title>
     <RootNamespace>EFCore.BulkExtensions</RootNamespace>
-    <Description>EntityFramework .Net EFCore EF Core Bulk Batch Extensions for Insert Update Delete Read (CRUD) operations</Description>
+    <Description>EntityFramework .Net EFCore EF Core Bulk Batch Extensions for Insert Update Delete Read (CRUD) operations - .NET 10 Fork</Description>
+    <PackageId>EFCore.BulkExtensions.Dotnet10.Core</PackageId>
 	<NuGetAudit>false</NuGetAudit>
   </PropertyGroup>
   <ItemGroup>

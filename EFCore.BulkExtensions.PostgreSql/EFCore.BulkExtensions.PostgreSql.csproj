@@ -1,9 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
-    <Title>EFCore.BulkExtensions.PostgreSql</Title>
-    <Description>EntityFramework .Net EFCore EF Core Bulk Batch Extensions for Insert Update Delete Read (CRUD) operations on PostgreSQL</Description>
-    <PackageTags>$(PackageTags) PostgreSQL</PackageTags>
+    <Title>EFCore.BulkExtensions.Dotnet10.PostgreSql</Title>
+    <Description>EntityFramework .Net EFCore EF Core Bulk Batch Extensions for Insert Update Delete Read (CRUD) operations on PostgreSQL - .NET 10 Fork</Description>
+    <PackageTags>$(PackageTags) PostgreSQL Dotnet10</PackageTags>
+    <PackageId>EFCore.BulkExtensions.Dotnet10.PostgreSql</PackageId>
   </PropertyGroup>
   <ItemGroup>
 	<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.0-rc.2" />

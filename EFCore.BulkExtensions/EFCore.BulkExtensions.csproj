@@ -1,9 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
-    <Title>EFCore.BulkExtensions</Title>
-    <Description>EntityFramework .Net EFCore EF Core Bulk Batch Extensions for Insert Update Delete Read (CRUD) operations on SQL Server, PostgreSQL, MySQL, SQLite</Description>
-    <PackageTags>$(PackageTags) SQLServer PostgreSQL MySQL SQLite</PackageTags>
+    <Title>EFCore.BulkExtensions.Dotnet10</Title>
+    <Description>EntityFramework .Net EFCore EF Core Bulk Batch Extensions for Insert Update Delete Read (CRUD) operations on SQL Server, PostgreSQL, SQLite - .NET 10 Fork</Description>
+    <PackageTags>$(PackageTags) SQLServer PostgreSQL SQLite Dotnet10 Net10</PackageTags>
+    <PackageId>EFCore.BulkExtensions.Dotnet10</PackageId>
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <NoWarn>$(NoWarn);NU5128</NoWarn>
 	<NuGetAudit>false</NuGetAudit>

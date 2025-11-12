@@ -1,12 +1,17 @@
-# EFCore.BulkExtensions
+# EFCore.BulkExtensions.Dotnet10
 EntityFrameworkCore extensions that offer enterprise-grade performance boost - into overdrive:  
 -Bulk operations (super fast, en masse DB Protocol): **Insert, Update, Delete, Read, Upsert, Sync, SaveChanges.**  
 -Batch ops (chunk-oriented processing): **Update, Delete** - Deprecated from EF8 (v7+ has native Execute-Up/Del).  
 -AddOp (additional improvement): **Truncate.**  
 Library is Lightweight and very Efficient (warp speed), having all mostly used [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) operation.  
 Was selected in top 20 [EF Core Extensions](https://docs.microsoft.com/en-us/ef/core/extensions/) recommended by *Microsoft*.  
-Latest version is using EF Core 9.  
-Supports all 5 major sql databases: **SQLServer, PostgreSQL, MySQL, Oracle, SQLite.**    
+
+**This is a fork for .NET 10.0 and EF Core 10.0 support.**  
+Latest version is using EF Core 10 RC.  
+Supports SQL databases: **SQLServer, PostgreSQL, SQLite.**  
+*Note: MySQL and Oracle support temporarily excluded until providers release EF Core 10 compatible versions.*
+
+Forked from [borisdj/EFCore.BulkExtensions](https://github.com/borisdj/EFCore.BulkExtensions)  
 Check out [Testimonials](https://docs.google.com/spreadsheets/d/e/2PACX-1vShdv2sTm3oQfowm9kVIx-PLBCk1lGQEa9E6n92-dX3pni7-XQUEp6taVcMSZVi9BaSAizv1YanWTy3/pubhtml?gid=801420190&single=true) from the Community and User Comments.  
 With thousands of pleased Users and many satisfied Clients from around the globe.  
 Customers range from small and medium-sized businesses to large corporations,  
@@ -26,6 +31,25 @@ Open source (MIT or cFOSS) authored [.Net libraries](https://infopedia.io/dot-ne
 | 5  | [FixedWidthParserWriter](https://github.com/borisdj/FixedWidthParserWriter) | .Net_Lib(ngt) MIT | Reading & Writing fixed-width/flat data files |
 | 6  | [CsCodeGenerator](https://github.com/borisdj/CsCodeGenerator) | .Net_Lib(ngt) MIT | C# code generation based on Classes and elements |
 | 7  | [CsCodeExample](https://github.com/borisdj/CsCodeExample) | C# Code ( - )  MIT | Examples of C# code in form of a simple tutorial |
+
+## .NET 10 / EF Core 10 Specific Notes
+
+This fork has been updated to support:
+- **.NET 10.0** framework
+- **EF Core 10.0 RC** (using RC packages until RTM is released)
+- Breaking API changes in EF Core 10 have been addressed
+
+### Current Status
+- ✅ **Build**: Successful
+- ✅ **SQL Server**: Compatible (EF Core 10.0-rc.2)
+- ✅ **PostgreSQL**: Compatible (Npgsql 10.0.0-rc.2)
+- ✅ **SQLite**: Compatible (EF Core 10.0-rc.2)
+- ⏸️ **MySQL**: Temporarily excluded (Pomelo provider doesn't support EF Core 10 yet)
+- ⏸️ **Oracle**: Temporarily excluded (Oracle provider doesn't support EF Core 10 yet)
+
+### Known Issues
+- Some reflection-based parameter extraction may need refinement for certain edge cases
+- When MySQL and Oracle providers release EF Core 10 support, they will be re-enabled
 
 ## License
 BulkExtensions [licensed](https://github.com/borisdj/EFCore.BulkExtensions/blob/master/LICENSE.txt) under [**Dual License**](https://codis.tech/efcorebulk) (**cFOSS**: *conditionallyFree* OSS - [**OpenSource Sustainability**](https://infopedia.io/solution-to-opensource-sustainability/) & funding).  

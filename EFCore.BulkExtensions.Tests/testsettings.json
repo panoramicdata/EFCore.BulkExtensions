@@ -1,8 +1,8 @@
 {
   "ConnectionStrings": {
-    "SqlServer": "Server=localhost;Database={databaseName};Trusted_Connection=True;TrustServerCertificate=True;MultipleActiveResultSets=true;",
+    "SqlServer": "Server=localhost,1433;Database={databaseName};User Id=sa;Password=EFCoreBulk123!;TrustServerCertificate=True;MultipleActiveResultSets=true;Encrypt=False;",
     "Sqlite": "Data Source={databaseName}.db",
-    "PostgreSql": "Server=localhost;Port=5432;Database={databaseName};User Id=postgres;Password=Postgres22;",
+    "PostgreSql": "Server=localhost;Port=5435;Database={databaseName};User Id=postgres;Password=EFCoreBulk123!;",
     "MySql": "Server=localhost;Database={databaseName};Uid=root;Pwd=MySQL22;AllowLoadLocalInfile=true;",
     "Oracle": "Data Source=localhost:1521/XEPDB1;User Id=SYSTEM;Password=Oracle;Pooling=True;Min Pool Size=5;Max Pool Size=30;Connection Lifetime=900;Connection Timeout=15;"
   }
