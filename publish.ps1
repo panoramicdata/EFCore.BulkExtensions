@@ -104,10 +104,10 @@ $failed = 0
 foreach ($packageFile in $packageFiles) {
     $packagePath = $packageFile.FullName
     Write-Host "Publishing: $($packageFile.Name)" -ForegroundColor Cyan
-    
+
     try {
         dotnet nuget push $packagePath --api-key $apiKey --source https://api.nuget.org/v3/index.json --skip-duplicate
-        
+
         if ($LASTEXITCODE -eq 0) {
             Write-Host "  ✓ Published successfully" -ForegroundColor Green
             $published++
@@ -120,7 +120,7 @@ foreach ($packageFile in $packageFiles) {
         Write-Host "  ✗ Error: $_" -ForegroundColor Red
         $failed++
     }
-    
+
     Write-Host ""
 }
 

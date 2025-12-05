@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.4.32804.182
+# Visual Studio Version 18
+VisualStudioVersion = 18.0.11222.15 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.BulkExtensions.Tests", "EFCore.BulkExtensions.Tests\EFCore.BulkExtensions.Tests.csproj", "{2328B243-982C-47B7-885B-999231149C72}"
 EndProject
@@ -16,6 +16,27 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.BulkExtensions.SqlServer", "EFCore.BulkExtensions.SqlServer\EFCore.BulkExtensions.SqlServer.csproj", "{8879D6FE-62DB-49DF-A8DF-70AD386C9FC6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EFCore.BulkExtensions.PerProvider", "EFCore.BulkExtensions.PerProvider", "{2DFD1CF8-67D7-4B56-B131-CE01B1F2DC7C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9948E67B-EA83-452C-A48E-8936273F8E79}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		CODE_OF_CONDUCT.md = CODE_OF_CONDUCT.md
+		CONTRIBUTING.md = CONTRIBUTING.md
+		Directory.Build.props = Directory.Build.props
+		docker-compose.yml = docker-compose.yml
+		DOCKER-SETUP.md = DOCKER-SETUP.md
+		EFCoreBulkLogo.png = EFCoreBulkLogo.png
+		EFCoreBulkLogo_small.png = EFCoreBulkLogo_small.png
+		LICENSE.txt = LICENSE.txt
+		MIGRATION-SUMMARY.md = MIGRATION-SUMMARY.md
+		MultiTargetRefs.txt = MultiTargetRefs.txt
+		nuget-key.txt = nuget-key.txt
+		NUGET-PACKAGES.md = NUGET-PACKAGES.md
+		publish.ps1 = publish.ps1
+		PUBLISHED.md = PUBLISHED.md
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
